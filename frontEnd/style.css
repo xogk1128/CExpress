@@ -1,0 +1,104 @@
+body {
+    margin: 0%;
+    font-family: 'Source Sans Pro';
+}
+
+a {
+    /* 텍스트 데코레이션 none을 통해 링크밑줄 제거 */
+    text-decoration: none;
+    color: white;
+}
+
+.navBar {
+    display: flex; /* 정렬 */
+    justify-content: space-between; /* 로고 메뉴 링크끼리의 공간 확보 */
+    align-items: center;    /* 높이를 중앙으로 통일 */
+    background-color: #263343;
+    padding: 8px 12px;
+}
+
+.navbar__logo {
+    font-size: 24px;
+    color: white;
+}
+
+.navbar__logo i {
+    color: #d49466; /*로고 색깔*/
+}
+
+.navbar__menu li:hover{
+    background-color: #d49466;
+    border-radius: 4px;
+}
+
+.navbar__menu {
+    
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+
+/* 메뉴 리스트끼리의 간격 */
+.navbar__menu li {
+    padding: 8px 12px;
+
+}
+
+.navbar__icons {
+    list-style: none;
+    color: white;
+    display: flex;
+    padding-left: 0%; /* 너비 100퍼했을때 중앙으로 가게 */
+}
+
+.navbar__icons li {
+    padding: 8px 12px;
+}
+
+.navbar__togleBtn {
+    display: none; /* 화면이 작아졌을때만 나오게 ㄱ */
+    position: absolute; /* 흐름과 상관없이 제일 위로 */
+    right: 32px;
+    font-size: 24px;
+    color: #d49466;
+    
+}
+
+/* 반응형으로 만들기 */
+@media screen and (max-width:768px) {
+    .navBar {
+        flex-direction: column; /* 아래로 내려가게 */
+        align-items: flex-start; /*  수평에서 왼쪽이니까 */
+        padding: 8px 24px; /* 너무 꽉 차서 패딩 주기*/
+    }
+    .navbar__menu {
+        display: none;
+        flex-direction: column;
+        align-items: center; /* 메뉴는 중앙으로 but 안됨 -> 너비가 작기 때문 */
+        width: 100%;
+    }
+
+    .navbar__menu li {
+        width: 100%; /* 이렇게 하면 텍스트가 다시 왼쪽으로 감
+        그 이유는 넓어졌을때 텍스트가 자동으로 왼쪽으로 감  */
+        text-align: center;
+    }
+
+    .navbar__icons {
+        display: none;
+        /* 아이콘은 플렉스의 방향을 바꾸지 않고 중앙으로 해야 함 */
+        justify-content: center;
+        width: 100%; /* 너비를 줘야 중앙으로 감 
+        but 기본으로 적용된 패딩때문에 애매한 중간으로 감 */
+
+    }
+    .navbar__togleBtn {
+        display: block; /* 화면 나오게 */
+    }
+
+    .navbar__menu.active,
+    .navbar__icons.active {
+        display: flex;
+    }
+}
